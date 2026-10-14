@@ -173,6 +173,382 @@
                 grid-template-columns: 1fr;
             }
         }
+
+
+        /* =====================================================
+           PERÍODO OBRIGATÓRIO
+        ===================================================== */
+
+        .period-label strong.vazio {
+            color: #9a90b0;
+            font-weight: 400;
+        }
+
+        .period-hint {
+            margin: 4px 0 0;
+            color: #9a90b0;
+            font-size: var(--fs-xs);
+        }
+
+        .periods.erro {
+            padding: 10px;
+            margin: -10px;
+            border-radius: 18px;
+            outline: 2px solid #d14a4a;
+            outline-offset: 0;
+        }
+
+        .period-erro {
+            margin-top: 14px;
+            color: #b53636;
+            font-size: var(--fs-sm);
+            font-weight: 700;
+        }
+
+        .period:focus-visible,
+        .consult-card:focus-visible,
+        .btn-acao:focus-visible,
+        .opcao-botao:focus-visible {
+            outline: 3px solid #F081B3;
+            outline-offset: 2px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+
+        /* =====================================================
+           CARD SELECIONADO
+        ===================================================== */
+
+        .consult-card.active {
+            border-color: #6a5496;
+            box-shadow: 0 0 0 2px rgba(106,84,150,.25);
+        }
+
+
+        /* =====================================================
+           ÁREA DE RESULTADO (aparece abaixo dos cards)
+        ===================================================== */
+
+        .resultado-area {
+            margin-top: 25px;
+            scroll-margin-top: 16px;
+        }
+
+        .resultado {
+            border: 1px solid #e0d9ee;
+            border-radius: 16px;
+            background: white;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(46,34,80,.06);
+            animation: resultado-aparece .18s ease-out;
+        }
+
+        @keyframes resultado-aparece {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .resultado { animation: none; }
+        }
+
+        .resultado-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px 14px;
+            padding: 14px 20px;
+            background: linear-gradient(90deg, #816BAE, #6a5496);
+            color: white;
+        }
+
+        .resultado-header h3 {
+            margin: 0;
+            font-size: var(--fs-md);
+            font-weight: 700;
+        }
+
+        .resultado-periodo {
+            font-size: var(--fs-sm);
+            opacity: .95;
+        }
+
+        .resultado-body {
+            padding: 18px;
+        }
+
+
+        /* =====================================================
+           NOTIFICAÇÕES: LINHA DO TEMPO
+           (cada notificação é um card; a linha lateral indica a ordem)
+        ===================================================== */
+
+        .notif-lista {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .notif-lista::before {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 22px;
+            bottom: 22px;
+            width: 2px;
+            border-radius: 2px;
+            background: #e6dff2;
+        }
+
+        .notif-item {
+            position: relative;
+            padding: 0 0 16px 40px;
+        }
+
+        .notif-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .notif-item::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 22px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cor);
+            box-shadow: 0 0 0 4px #fff, 0 0 0 6px var(--anel);
+        }
+
+        .notif-item.ativo {
+            --cor: #3f8f55;
+            --anel: #cfe9d8;
+        }
+
+        .notif-item.desligado {
+            --cor: #c8483f;
+            --anel: #f4d3d0;
+        }
+
+        .notif-card {
+            padding: 16px 18px;
+            border: 1px solid #ebe5f4;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(46,34,80,.05);
+        }
+
+        .notif-topo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .notif-data {
+            margin-right: 4px;
+            color: #2e2250;
+            font-size: var(--fs-sm);
+            font-weight: 700;
+        }
+
+        .pill {
+            padding: 3px 11px;
+            border-radius: 999px;
+            font-size: var(--fs-xs);
+            font-weight: 700;
+        }
+
+        .pill.ativo     { background: #eaf8ef; color: #2c7a46; }
+        .pill.desligado { background: #fdeeee; color: #b53636; }
+        .pill.tipo      { background: #efebf7; color: #6a5496; }
+
+        .notif-motivo {
+            margin: 12px 0 2px;
+            color: #2e2250;
+            font-size: var(--fs-md);
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        .notif-obs {
+            margin: 0;
+            color: #75698f;
+            font-size: var(--fs-sm);
+            line-height: 1.5;
+        }
+
+        .notif-despacho {
+            margin-top: 14px;
+            padding: 12px 15px;
+            border-left: 3px solid #816BAE;
+            border-radius: 4px 12px 12px 4px;
+            background: #f7f4fc;
+            color: #3b3057;
+            font-size: var(--fs-sm);
+            line-height: 1.6;
+        }
+
+        .notif-despacho strong {
+            color: #2e2250;
+        }
+
+        .notif-acoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .btn-acao {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            font-size: var(--fs-xs);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .15s, color .15s, border-color .15s;
+        }
+
+        .btn-acao.verde    { background: #eaf8ef; color: #2c7a46; border-color: #cfe9d8; }
+        .btn-acao.azul     { background: #e8f4f9; color: #23799a; border-color: #c6e3ee; }
+        .btn-acao.vermelho { background: #fdeeee; color: #b53636; border-color: #f4d3d0; }
+        .btn-acao.roxo     { background: #efebf7; color: #6a5496; border-color: #ddd4ee; }
+
+        .btn-acao.verde:hover    { background: #3f8f55; color: #fff; border-color: #3f8f55; }
+        .btn-acao.azul:hover     { background: #2f8fb0; color: #fff; border-color: #2f8fb0; }
+        .btn-acao.vermelho:hover { background: #c8483f; color: #fff; border-color: #c8483f; }
+        .btn-acao.roxo:hover     { background: #6a5496; color: #fff; border-color: #6a5496; }
+
+        .notif-vazio {
+            margin: 0;
+            padding: 28px 18px;
+            border: 1px dashed #d9d0ea;
+            border-radius: 14px;
+            background: #fcfbff;
+            color: #75698f;
+            font-size: var(--fs-sm);
+            text-align: center;
+        }
+
+        @media (max-width: 560px) {
+            .notif-item {
+                padding-left: 32px;
+            }
+
+            .notif-card {
+                padding: 14px;
+            }
+
+            .btn-acao {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+        }
+
+
+        /* =====================================================
+           REQUERIMENTOS E RENOVAÇÃO: LISTA DE OPÇÕES
+        ===================================================== */
+
+        .opcoes-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .opcao-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 18px;
+            border: 1px solid #e6e1f0;
+            border-radius: 10px;
+            background: #fcfbff;
+        }
+
+        .opcao-icon {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: #efebf7;
+            font-size: var(--fs-xl);
+        }
+
+        .opcao-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .opcao-info h4 {
+            margin: 0 0 4px;
+            color: #2e2250;
+            font-size: var(--fs-md);
+        }
+
+        .opcao-info p {
+            margin: 0;
+            color: #75698f;
+            font-size: var(--fs-desc);
+            line-height: 1.5;
+        }
+
+        .opcao-botao {
+            flex-shrink: 0;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 7px;
+            background: #6a5496;
+            color: white;
+            font-size: var(--fs-xs);
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s;
+        }
+
+        .opcao-botao:hover {
+            background: #54427d;
+        }
+
+        .opcao-botao.secundario {
+            background: white;
+            color: #6a5496;
+            border: 1px solid #6a5496;
+        }
+
+        .opcao-botao.secundario:hover {
+            background: #f1edf8;
+        }
+
+        @media (max-width: 700px) {
+            .opcao-card {
+                flex-wrap: wrap;
+            }
+
+            .opcao-info {
+                min-width: 60%;
+            }
+
+            .opcao-botao {
+                width: 100%;
+            }
+
+            .resultado-body {
+                padding: 12px;
+            }
+        }
     </style>
 </head>
 
@@ -209,16 +585,26 @@
 
                 <h2>Sobre qual benefício quer tratar?</h2>
 
-                <div class="periods">
-                    <button class="period" data-period="2020-1">2020-1</button>
-                    <button class="period" data-period="2020-2">2020-2</button>
-                    <button class="period" data-period="2021-1">2021-1</button>
-                    <button class="period" data-period="2021-2">2021-2</button>
+                <div class="periods" id="periodsBox">
+                    <button type="button" class="period" data-period="2024-1" aria-pressed="false">2024-1</button>
+                    <button type="button" class="period" data-period="2024-2" aria-pressed="false">2024-2</button>
+                    <button type="button" class="period" data-period="2025-1" aria-pressed="false">2025-1</button>
+                    <button type="button" class="period" data-period="2025-2" aria-pressed="false">2025-2</button>
+                    <button type="button" class="period" data-period="2026-1" aria-pressed="false">2026-1</button>
+                    <button type="button" class="period" data-period="2026-2" aria-pressed="false">2026-2</button>
+                </div>
+
+                <div class="period-erro" id="periodErro" role="alert" hidden>
+                    Selecione o período da bolsa para continuar.
                 </div>
 
                 <div class="period-label">
-                    Benefício selecionado: <strong id="selectedPeriod"></strong>
+                    Benefício selecionado: <strong id="selectedPeriod" class="vazio">Nenhum</strong>
                 </div>
+
+                <p class="period-hint">
+                    Notificações e Requerimentos exigem um período. A Renovação não.
+                </p>
 
                 <div class="divider"></div>
 
@@ -226,7 +612,8 @@
 
                 <div class="consult-cards">
 
-                    <button class="consult-card blue" data-section="Notificações">
+                    <button type="button" class="consult-card blue" data-section="Notificações"
+                            data-alvo="res-notificacoes" aria-expanded="false">
                         <div class="consult-icon">🔔</div>
 
                         <div class="consult-title-row">
@@ -240,7 +627,8 @@
                         </p>
                     </button>
 
-                    <button class="consult-card green" data-section="Requerimentos">
+                    <button type="button" class="consult-card green" data-section="Requerimentos"
+                            data-alvo="res-requerimentos" aria-expanded="false">
                         <div class="consult-icon">📄</div>
 
                         <div class="consult-title-row">
@@ -254,7 +642,8 @@
                         </p>
                     </button>
 
-                    <button class="consult-card purple" data-section="Renovação">
+                    <button type="button" class="consult-card purple" data-section="Renovação"
+                            data-alvo="res-renovacao" data-exige-periodo="false" aria-expanded="false">
                         <div class="consult-icon">💲</div>
 
                         <div class="consult-title-row">
@@ -269,6 +658,116 @@
 
                 </div>
 
+
+                <!-- =================================================
+                     RESULTADO: aparece abaixo dos cards, só depois do clique
+                ================================================= -->
+
+                <div class="resultado-area" id="resultadoArea" aria-live="polite">
+
+
+                    <!-- ============ NOTIFICAÇÕES ============
+                         Os dados abaixo são de exemplo. Troque pelas
+                         notificações reais da bolsa. -->
+
+                    <section class="resultado" id="res-notificacoes" hidden>
+
+                        <div class="resultado-header">
+                            <h3>Notificações</h3>
+                            <span class="resultado-periodo">Período <span class="js-periodo"></span></span>
+                        </div>
+
+                        <div class="resultado-body">
+                            <ol class="notif-lista" id="notifLista"></ol>
+
+                            <p class="notif-vazio" id="notifVazio" hidden></p>
+                        </div>
+
+                    </section>
+
+
+                    <!-- ============ REQUERIMENTOS ============ -->
+
+                    <section class="resultado" id="res-requerimentos" hidden>
+
+                        <div class="resultado-header">
+                            <h3>Requerimentos</h3>
+                            <span class="resultado-periodo">Período <span class="js-periodo"></span></span>
+                        </div>
+
+                        <div class="resultado-body">
+                            <div class="opcoes-lista">
+
+                                <div class="opcao-card">
+                                    <div class="opcao-icon">⏸️</div>
+                                    <div class="opcao-info">
+                                        <h4>Suspensão Temporária</h4>
+                                        <p>Solicite a suspensão temporária da sua bolsa.</p>
+                                    </div>
+                                    <button type="button" class="opcao-botao" data-acao="Suspensão Temporária">Solicitar</button>
+                                </div>
+
+                                <div class="opcao-card">
+                                    <div class="opcao-icon">🔄</div>
+                                    <div class="opcao-info">
+                                        <h4>Reingresso</h4>
+                                        <p>Solicite o seu retorno ao programa.</p>
+                                    </div>
+                                    <button type="button" class="opcao-botao" data-acao="Reingresso">Solicitar</button>
+                                </div>
+
+                                <div class="opcao-card">
+                                    <div class="opcao-icon">🚪</div>
+                                    <div class="opcao-info">
+                                        <h4>Desistência</h4>
+                                        <p>Formalize a desistência da sua bolsa.</p>
+                                    </div>
+                                    <button type="button" class="opcao-botao" data-acao="Desistência">Solicitar</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <!-- ============ RENOVAÇÃO ============
+                         Não depende do período selecionado. -->
+
+                    <section class="resultado" id="res-renovacao" hidden>
+
+                        <div class="resultado-header">
+                            <h3>Renovação</h3>
+                        </div>
+
+                        <div class="resultado-body">
+                            <div class="opcoes-lista">
+
+                                <div class="opcao-card">
+                                    <div class="opcao-icon">💲</div>
+                                    <div class="opcao-info">
+                                        <h4>Renovação de Benefício</h4>
+                                        <p>Solicite a renovação da sua bolsa para o próximo período letivo.</p>
+                                    </div>
+                                    <button type="button" class="opcao-botao" data-acao="Renovação de Benefício">Solicitar renovação</button>
+                                </div>
+
+                                <div class="opcao-card">
+                                    <div class="opcao-icon">🧾</div>
+                                    <div class="opcao-info">
+                                        <h4>Comprovante de Renovação</h4>
+                                        <p>Consulte os comprovantes das renovações já feitas anteriormente.</p>
+                                    </div>
+                                    <button type="button" class="opcao-botao secundario" data-acao="Comprovante de Renovação">Ver comprovantes</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
+
+                </div>
+
             </section>
 
         </section>
@@ -277,32 +776,228 @@
 </div>
 
 <script>
-    const periods = document.querySelectorAll(".period");
-    const selectedPeriod = document.getElementById("selectedPeriod");
+    (function () {
 
-    periods.forEach(button => {
-        button.addEventListener("click", () => {
-            periods.forEach(item => item.classList.remove("selected"));
-            button.classList.add("selected");
-            selectedPeriod.textContent = button.dataset.period;
+        var periods       = document.querySelectorAll(".period");
+        var periodsBox    = document.getElementById("periodsBox");
+        var periodErro    = document.getElementById("periodErro");
+        var selectedLabel = document.getElementById("selectedPeriod");
+        var cards         = document.querySelectorAll(".consult-card");
+        var resultados    = document.querySelectorAll(".resultado");
+        var area          = document.getElementById("resultadoArea");
+
+        var periodoAtual  = "";   // período escolhido ("" = nenhum)
+        var pendente      = null; // card clicado sem período (abre depois de escolher)
+
+
+
+        // =====================================================
+        // NOTIFICAÇÕES POR PERÍODO
+
+        var NOTIFICACOES = {
+
+            "2024-1": [
+                { data: "05/03/2024", situacao: "Ativo", tipo: "Integral",
+                  motivo: "Inclusão", observacao: "Inclusão 2024-1" }
+            ],
+
+            "2024-2": [
+                { data: "12/08/2024", situacao: "Ativo", tipo: "Integral",
+                  motivo: "Renovação de benefício", observacao: "Renovação 2024-2" }
+            ],
+
+            "2025-1": [
+                { data: "10/03/2025", situacao: "Ativo", tipo: "Integral",
+                  motivo: "Renovação de benefício", observacao: "Renovação 2025-1" }
+            ],
+
+            "2025-2": [
+                { data: "11/09/2025", situacao: "Desligado", tipo: "Integral",
+                  motivo: "Não está frequentando a faculdade",
+                  observacao: "Desligamento automático - frequência",
+                  despacho: "<strong>Motivo:</strong> Não frequente<br><br>" +
+                            "<strong>NOTIFICAÇÃO 2025/2-CAISE -</strong> Vimos, por meio desta, " +
+                            "<strong>NOTIFICAR</strong> Vossa Senhoria da suspensão liminar de seu benefício " +
+                            "face à informação de não frequência, conforme coleta de dados enviada " +
+                            "pela Instituição de Ensino Superior.",
+                  acoes: ["visualizar", "recurso", "impressa"] },
+
+                { data: "02/10/2025", situacao: "Ativo", tipo: "Integral",
+                  motivo: "Correção de desligamento automático - coleta de dados",
+                  observacao: "Coleta enviada pela IES via e-mail em 02/10/25" }
+            ],
+
+            "2026-1": [
+                { data: "04/02/2026", situacao: "Desligado", tipo: "Integral",
+                  motivo: "Desligamento por não cumprimento do Banco de Oportunidades",
+                  observacao: "Pontuação mínima do Banco de Oportunidades não atingida",
+                  acoes: ["visualizar", "recurso", "impressa"] },
+
+                { data: "24/02/2026", situacao: "Ativo", tipo: "Integral",
+                  motivo: "Correção de desligamento",
+                  observacao: "Recurso deferido - benefício restabelecido" }
+            ],
+
+            "2026-2": []   // sem notificações: mostra a mensagem de vazio
+        };
+
+        var ACOES = {
+            visualizar: { cls: "verde",    icone: "🔍", texto: "Visualizar Processo" },
+            declaracao: { cls: "azul",     icone: "🎓", texto: "Declaração Conclusão" },
+            recurso:    { cls: "vermelho", icone: "✉️", texto: "Enviar Recurso" },
+            impressa:   { cls: "roxo",     icone: "🖨️", texto: "Versão Impressa" }
+        };
+
+        function esc(texto) {
+            return String(texto).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        }
+
+        function paraData(br) {            // "04/02/2026" -> Date
+            var p = br.split("/");
+            return new Date(p[2], p[1] - 1, p[0]);
+        }
+
+        // Monta a lista de notificações do período (mais recente primeiro)
+        function renderNotificacoes(periodo) {
+            var lista = document.getElementById("notifLista");
+            var vazio = document.getElementById("notifVazio");
+
+            var itens = (NOTIFICACOES[periodo] || []).slice().sort(function (a, b) {
+                return paraData(b.data) - paraData(a.data);
+            });
+
+            lista.innerHTML = itens.map(function (n) {
+                var cls = n.situacao.toLowerCase() === "ativo" ? "ativo" : "desligado";
+
+                var despacho = n.despacho
+                    ? '<div class="notif-despacho">' + n.despacho + '</div>'
+                    : "";
+
+                var botoes = (n.acoes || []).map(function (chave) {
+                    var a = ACOES[chave];
+                    return '<button type="button" class="btn-acao ' + a.cls +
+                           '" data-acao="' + a.texto + '"><span aria-hidden="true">' +
+                           a.icone + '</span>' + a.texto + '</button>';
+                }).join("");
+
+                return '<li class="notif-item ' + cls + '">' +
+                         '<article class="notif-card">' +
+                           '<div class="notif-topo">' +
+                             '<span class="notif-data">' + esc(n.data) + '</span>' +
+                             '<span class="pill ' + cls + '">' + esc(n.situacao) + '</span>' +
+                             '<span class="pill tipo">' + esc(n.tipo) + '</span>' +
+                           '</div>' +
+                           '<h4 class="notif-motivo">' + esc(n.motivo) + '</h4>' +
+                           '<p class="notif-obs">' + esc(n.observacao) + '</p>' +
+                           despacho +
+                           (botoes ? '<div class="notif-acoes">' + botoes + '</div>' : "") +
+                         '</article>' +
+                       '</li>';
+            }).join("");
+
+            lista.hidden = itens.length === 0;
+            vazio.hidden = itens.length > 0;
+            vazio.textContent = "Nenhuma notificação para o período " + periodo + ".";
+        }
+
+        // ---------- período ----------
+
+        function definirPeriodo(valor) {
+            periodoAtual = valor;
+
+            selectedLabel.textContent = valor || "Nenhum";
+            selectedLabel.classList.toggle("vazio", !valor);
+
+            document.querySelectorAll(".js-periodo").forEach(function (el) {
+                el.textContent = valor;
+            });
+
+            renderNotificacoes(valor);   // atualiza as notificações do período
+        }
+
+        function mostrarErro(mostrar) {
+            periodErro.hidden = !mostrar;
+            periodsBox.classList.toggle("erro", mostrar);
+        }
+
+
+        // ---------- abrir resultado abaixo dos cards ----------
+
+        function abrir(card) {
+            cards.forEach(function (c) {
+                var ativo = (c === card);
+                c.classList.toggle("active", ativo);
+                c.setAttribute("aria-expanded", ativo ? "true" : "false");
+            });
+
+            resultados.forEach(function (r) {
+                r.hidden = (r.id !== card.dataset.alvo);
+            });
+
+            area.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+
+        // ---------- cliques nos períodos ----------
+
+        periods.forEach(function (botao) {
+            botao.addEventListener("click", function () {
+
+                periods.forEach(function (p) {
+                    p.classList.remove("selected");
+                    p.setAttribute("aria-pressed", "false");
+                });
+
+                botao.classList.add("selected");
+                botao.setAttribute("aria-pressed", "true");
+
+                definirPeriodo(botao.dataset.period);
+                mostrarErro(false);
+
+                // se a pessoa tentou abrir algo antes de escolher o período, abre agora
+                if (pendente) {
+                    abrir(pendente);
+                    pendente = null;
+                }
+            });
         });
-    });
 
-    const cards = document.querySelectorAll(".consult-card");
 
-    cards.forEach(card => {
-        card.addEventListener("click", () => {
-            const section = card.dataset.section;
-            const period = selectedPeriod.textContent;
+        // ---------- cliques nos cards ----------
+
+        cards.forEach(function (card) {
+            card.addEventListener("click", function () {
+
+                var exigePeriodo = card.dataset.exigePeriodo !== "false";
+
+                if (exigePeriodo && !periodoAtual) {
+                    pendente = card;
+                    mostrarErro(true);
+                    periodsBox.scrollIntoView({ behavior: "smooth", block: "center" });
+                    return;
+                }
+
+                pendente = null;
+                abrir(card);
+            });
+        });
+
+
+
+
+        document.addEventListener("click", function (e) {
+            var botao = e.target.closest("[data-acao]");
+            if (!botao) return;
 
             alert(
-                "Consulta selecionada: " +
-                section +
-                "\\nPeríodo: " +
-                period
+                "Ação selecionada: " + botao.dataset.acao +
+                "\nPeríodo: " + (periodoAtual || "não se aplica")
             );
         });
-    });
+
+    })();
 </script>
 
     <script src="menu.js"></script>
