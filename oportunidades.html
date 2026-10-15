@@ -2,21 +2,17 @@
 <html lang="pt-BR">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ProBem - Oportunidades</title>
+    <title>ProBem - Oportunidades de Estágio</title>
 
     <link rel="stylesheet" href="tipografia.css">
     <link rel="stylesheet" href="style.css">
 
     <style>
-
         /* ================================
            TÍTULO
         ================================= */
-
         .page-title {
             display: flex;
             align-items: center;
@@ -28,1243 +24,719 @@
             width: 48px;
             height: 48px;
             border-radius: 12px;
-
             background: #efebf7;
-
             display: grid;
             place-items: center;
-
             font-size: var(--fs-2xl);
         }
 
         .page-title h1 {
             margin: 0;
-
             color: #2e2250;
-
             font-size: var(--fs-2xl);
         }
 
         .page-title p {
             margin-top: 4px;
-
             color: #75698f;
-
             font-size: var(--fs-sm);
         }
-
 
         /* ================================
            BARRA DE BUSCA E FILTROS
         ================================= */
-
         .opportunities-toolbar {
             display: flex;
-
             align-items: center;
-
             gap: 12px;
-
             margin-bottom: 24px;
         }
 
-
         .search-box {
             flex: 1;
-
             position: relative;
         }
 
-
         .search-box span {
             position: absolute;
-
             left: 15px;
-
             top: 50%;
-
             transform: translateY(-50%);
-
             color: #8a7fa3;
-
             font-size: var(--fs-lg);
         }
 
-
         .search-box input {
             width: 100%;
-
             box-sizing: border-box;
-
             padding: 13px 16px 13px 44px;
-
             border: 1px solid #e5dff0;
-
             border-radius: 9px;
-
             outline: none;
-
             background: white;
-
             color: #2e2250;
-
             font-size: var(--fs-sm);
         }
 
-
         .search-box input:focus {
             border-color: #6a5496;
-
-            box-shadow:
-                0 0 0 3px rgba(106, 84, 150, .08);
+            box-shadow: 0 0 0 3px rgba(106, 84, 150, .08);
         }
-
-
-        .opportunity-filter {
-            padding: 12px 14px;
-
-            border: 1px solid #e5dff0;
-
-            border-radius: 9px;
-
-            background: white;
-
-            color: #5d5078;
-
-            font-size: var(--fs-xs);
-
-            outline: none;
-
-            cursor: pointer;
-        }
-
 
         /* ================================
            CABEÇALHO DA LISTA
         ================================= */
-
         .opportunities-heading {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             margin-bottom: 15px;
         }
 
-
         .opportunities-heading h2 {
             margin: 0;
-
             color: #2e2250;
-
             font-size: var(--fs-lg);
         }
 
-
         .opportunities-heading span {
             color: #75698f;
-
             font-size: var(--fs-xs);
         }
-
 
         /* ================================
            GRID
         ================================= */
-
         .opportunities-grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
+            grid-template-columns: repeat(2, 1fr);
             gap: 17px;
         }
-
 
         /* ================================
            CARD
         ================================= */
-
         .opportunity-card {
             background: white;
-
             border: 1px solid #e5dff0;
-
             border-radius: 12px;
-
             padding: 19px;
-
-            box-shadow:
-                0 6px 20px rgba(24, 70, 120, .05);
-
+            box-shadow: 0 6px 20px rgba(24, 70, 120, .05);
             transition: .2s;
+            display: flex;
+            flex-direction: column;
         }
-
 
         .opportunity-card:hover {
             transform: translateY(-3px);
-
-            box-shadow:
-                0 10px 25px rgba(24, 70, 120, .09);
+            box-shadow: 0 10px 25px rgba(24, 70, 120, .09);
         }
-
-
-        /* ================================
-           TOPO DO CARD
-        ================================= */
 
         .opportunity-top {
             display: flex;
-
             align-items: flex-start;
-
             gap: 13px;
-
-            margin-bottom: 13px;
+            margin-bottom: 10px;
         }
-
 
         .opportunity-icon {
             width: 44px;
             height: 44px;
-
             border-radius: 10px;
-
             background: #efebf7;
-
             display: grid;
-
             place-items: center;
-
             font-size: var(--fs-xl);
-
             flex-shrink: 0;
         }
-
 
         .opportunity-title {
             flex: 1;
         }
 
-
         .opportunity-title h3 {
-            margin: 0 0 5px;
-
+            margin: 0 0 3px;
             color: #2e2250;
-
             font-size: var(--fs-md);
-
             line-height: 1.3;
         }
 
-
         .opportunity-title p {
             margin: 0;
-
             color: #75698f;
-
             font-size: var(--fs-xs);
         }
-
-
-        /* ================================
-           ETIQUETA
-        ================================= */
 
         .opportunity-tag {
             display: inline-block;
-
+            align-self: flex-start;
             padding: 5px 8px;
-
             border-radius: 6px;
-
-            background: #f1edf8;
-
-            color: #6a5496;
-
+            background: #eaf8ef;
+            color: #32804b;
             font-size: var(--fs-xs);
-
             font-weight: 700;
-
             margin-bottom: 12px;
         }
 
-
-        .opportunity-tag.green {
-            background: #eaf8ef;
-
-            color: #32804b;
-        }
-
-
-        .opportunity-tag.yellow {
-            background: #fff7df;
-
-            color: #ad7a00;
-        }
-
-
-        /* ================================
-           DESCRIÇÃO
-        ================================= */
-
         .opportunity-description {
-            color: #736093;
-
+            color: #5d5078;
             font-size: var(--fs-xs);
-
             line-height: 1.55;
-
             margin-bottom: 15px;
         }
 
-
-        /* ================================
-           INFORMAÇÕES
-        ================================= */
-
         .opportunity-info {
             display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-
-            padding: 13px 0;
-
+            padding: 12px 0;
             border-top: 1px solid #eee9f5;
-
             border-bottom: 1px solid #eee9f5;
-
             margin-bottom: 14px;
+            margin-top: auto;
         }
-
 
         .opportunity-info div {
             display: flex;
-
             flex-direction: column;
-
             gap: 3px;
         }
 
-
         .opportunity-info span {
             color: #9a90b0;
-
             font-size: var(--fs-xs);
         }
-
 
         .opportunity-info strong {
             color: #4e3874;
-
             font-size: var(--fs-xs);
         }
-
-
-        /* ================================
-           RODAPÉ DO CARD
-        ================================= */
 
         .opportunity-footer {
             display: flex;
-
             align-items: center;
-
             justify-content: space-between;
-
             gap: 12px;
         }
 
-
-        .deadline {
-            color: #75698f;
-
-            font-size: var(--fs-xs);
+        .remuneracao-valor {
+            color: #2e2250;
+            font-size: var(--fs-sm);
+            font-weight: 700;
         }
 
-
-        .deadline strong {
+        .remuneracao-valor span {
             display: block;
-
-            color: #d14a4a;
-
+            color: #9a90b0;
             font-size: var(--fs-xs);
-
-            margin-top: 3px;
+            font-weight: normal;
         }
-
 
         .opportunity-button {
-            padding: 9px 15px;
-
+            padding: 9px 16px;
             border: 1px solid #6a5496;
-
             border-radius: 7px;
-
             background: #6a5496;
-
             color: white;
-
             text-decoration: none;
-
             font-size: var(--fs-xs);
-
             font-weight: 700;
-
             white-space: nowrap;
-
             transition: .2s;
+            cursor: pointer;
+            outline: none;
         }
-
 
         .opportunity-button:hover {
             background: #54427d;
-
             border-color: #54427d;
         }
 
-
         /* ================================
-           RESPONSIVIDADE
+           MODAL / POP-UP (DETALHES DA VAGA)
         ================================= */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(46, 34, 80, 0.4);
+            backdrop-filter: blur(4px);
+            display: grid;
+            place-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+        }
 
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            border: 1px solid #e0d9ee;
+            box-shadow: 0 15px 35px rgba(46, 34, 80, 0.15);
+            overflow: hidden;
+            transform: translateY(10px);
+            transition: transform 0.2s;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 18px 24px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-header h3 {
+            margin: 0;
+            color: #333;
+            font-size: var(--fs-md);
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #333;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        /* Tabela estilo Modal de Detalhes */
+        .vaga-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .vaga-table tr {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .vaga-table td {
+            padding: 12px 8px;
+            font-size: var(--fs-sm);
+            vertical-align: top;
+        }
+
+        .vaga-table td.label {
+            width: 130px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .vaga-table td.value {
+            color: #333;
+        }
+
+        .vaga-table ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .vaga-table li {
+            margin-bottom: 4px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-tenho-interesse {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: var(--fs-sm);
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+        }
+
+        .btn-tenho-interesse:hover {
+            background: #4cae4c;
+        }
+
+        /* RESPONSIVIDADE */
         @media (max-width: 950px) {
-
             .opportunities-grid {
                 grid-template-columns: 1fr;
             }
-
         }
-
-
-        @media (max-width: 700px) {
-
-            .opportunities-toolbar {
-                flex-direction: column;
-
-                align-items: stretch;
-            }
-
-            .opportunity-footer {
-                align-items: flex-start;
-
-                flex-direction: column;
-            }
-
-            .opportunity-button {
-                width: 100%;
-
-                box-sizing: border-box;
-
-                text-align: center;
-            }
-
-        }
-
     </style>
-
 </head>
-
 
 <body>
 
-
 <div class="app">
 
-
-    <!-- ================================
-         SIDEBAR
-    ================================= -->
-
+    <!-- SIDEBAR -->
     <aside class="sidebar"></aside>
 
-
-
-    <!-- ================================
-         CONTEÚDO PRINCIPAL
-    ================================= -->
-
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="main">
 
-
         <!-- TOPBAR -->
-
         <header class="topbar">
-
-
             <div></div>
-
-
             <div class="user">
-
-
                 <div class="notification">
-
                     🔔
-
-                    <span>
-                        3
-                    </span>
-
+                    <span>3</span>
                 </div>
-
-
-                <div class="avatar">
-                    JS
-                </div>
-
-
-                <strong>
-                    João Silva
-                </strong>
-
-
-                <span class="arrow">
-                    ⌄
-                </span>
-
-
+                <div class="avatar">JS</div>
+                <strong>João Silva</strong>
+                <span class="arrow">⌄</span>
             </div>
-
-
         </header>
 
-
-
         <!-- CONTEÚDO -->
-
         <section class="content">
 
-
-            <!-- ================================
-                 TÍTULO
-            ================================= -->
-
+            <!-- TÍTULO -->
             <div class="page-title">
-
-
-                <div class="title-icon">
-                    💼
-                </div>
-
-
+                <div class="title-icon">💼</div>
                 <div>
-
-                    <h1>
-                        Oportunidades
-                    </h1>
-
-                    <p>
-                        Encontre oportunidades de trabalho, estágio e desenvolvimento profissional.
-                    </p>
-
+                    <h1>Oportunidades de Estágio</h1>
+                    <p>Encontre vagas de estágio disponíveis para o seu perfil acadêmico.</p>
                 </div>
-
-
             </div>
 
-
-
-            <!-- ================================
-                 BUSCA E FILTROS
-            ================================= -->
-
+            <!-- BARRA DE BUSCA -->
             <div class="opportunities-toolbar">
-
-
                 <div class="search-box">
-
-                    <span>
-                        🔎
-                    </span>
-
-                    <input
-                        type="text"
-                        placeholder="Buscar oportunidades..."
-                    >
-
+                    <span>🔎</span>
+                    <input type="text" id="inpBusca" placeholder="Buscar por empresa, vaga ou cidade...">
                 </div>
-
-
-                <select class="opportunity-filter">
-
-                    <option>
-                        Todos os tipos
-                    </option>
-
-                    <option>
-                        Emprego
-                    </option>
-
-                    <option>
-                        Estágio
-                    </option>
-
-                    <option>
-                        Programa
-                    </option>
-
-                    <option>
-                        Evento
-                    </option>
-
-                </select>
-
-
-                <select class="opportunity-filter">
-
-                    <option>
-                        Todas as modalidades
-                    </option>
-
-                    <option>
-                        Presencial
-                    </option>
-
-                    <option>
-                        Híbrido
-                    </option>
-
-                    <option>
-                        Remoto
-                    </option>
-
-                </select>
-
-
             </div>
 
-
-
-            <!-- ================================
-                 CABEÇALHO
-            ================================= -->
-
+            <!-- CABEÇALHO DA LISTA -->
             <div class="opportunities-heading">
-
-
-                <h2>
-                    Oportunidades para você
-                </h2>
-
-
-                <span>
-                    6 oportunidades encontradas
-                </span>
-
-
+                <h2>Vagas disponíveis</h2>
+                <span id="txtContador">6 vagas encontradas</span>
             </div>
 
-
-
-            <!-- ================================
-                 CARDS
-            ================================= -->
-
-            <div class="opportunities-grid">
-
-
-
-                <!-- OPORTUNIDADE 1 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            💻
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Estágio em Desenvolvimento Web
-                            </h3>
-
-                            <p>
-                                Tech Solutions
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag green">
-                        ESTÁGIO
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Oportunidade para estudantes interessados em desenvolvimento web, programação e tecnologia.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Híbrido
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Localização
-                            </span>
-
-                            <strong>
-                                Goiânia - GO
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                05/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
-
-                <!-- OPORTUNIDADE 2 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            📊
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Assistente Administrativo
-                            </h3>
-
-                            <p>
-                                Grupo Nova Geração
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag">
-                        EMPREGO
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Vaga para apoio administrativo, organização de documentos e atendimento ao público.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Presencial
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Localização
-                            </span>
-
-                            <strong>
-                                Goiânia - GO
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                08/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
-
-                <!-- OPORTUNIDADE 3 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            🚀
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Programa Jovem Talento
-                            </h3>
-
-                            <p>
-                                Instituto Futuro
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag yellow">
-                        PROGRAMA
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Programa de desenvolvimento profissional com capacitação, mentoria e preparação para o mercado.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Online
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Duração
-                            </span>
-
-                            <strong>
-                                6 meses
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                12/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
-
-                <!-- OPORTUNIDADE 4 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            🎤
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Workshop de Comunicação
-                            </h3>
-
-                            <p>
-                                ProBem
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag yellow">
-                        EVENTO
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Workshop gratuito sobre comunicação profissional, apresentação pessoal e preparação para entrevistas.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Online
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Data
-                            </span>
-
-                            <strong>
-                                15/10/2026
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                13/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
-
-                <!-- OPORTUNIDADE 5 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            🌐
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Desenvolvedor Front-end Júnior
-                            </h3>
-
-                            <p>
-                                StartTech
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag">
-                        EMPREGO
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Vaga para profissionais iniciantes com conhecimentos em HTML, CSS, JavaScript e Bootstrap.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Remoto
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Localização
-                            </span>
-
-                            <strong>
-                                Brasil
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                18/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
-
-                <!-- OPORTUNIDADE 6 -->
-
-                <article class="opportunity-card">
-
-
-                    <div class="opportunity-top">
-
-
-                        <div class="opportunity-icon">
-                            📚
-                        </div>
-
-
-                        <div class="opportunity-title">
-
-                            <h3>
-                                Monitoria Acadêmica
-                            </h3>
-
-                            <p>
-                                Universidade ProBem
-                            </p>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <span class="opportunity-tag green">
-                        ACADÊMICA
-                    </span>
-
-
-                    <p class="opportunity-description">
-                        Programa de monitoria para estudantes interessados em auxiliar outros alunos e desenvolver experiência acadêmica.
-                    </p>
-
-
-                    <div class="opportunity-info">
-
-
-                        <div>
-
-                            <span>
-                                Modalidade
-                            </span>
-
-                            <strong>
-                                Presencial
-                            </strong>
-
-                        </div>
-
-
-                        <div>
-
-                            <span>
-                                Localização
-                            </span>
-
-                            <strong>
-                                Goiânia - GO
-                            </strong>
-
-                        </div>
-
-
-                    </div>
-
-
-                    <div class="opportunity-footer">
-
-
-                        <div class="deadline">
-
-                            Inscrições até
-
-                            <strong>
-                                20/10/2026
-                            </strong>
-
-                        </div>
-
-
-                        <a href="#" class="opportunity-button">
-                            Ver oportunidade
-                        </a>
-
-
-                    </div>
-
-
-                </article>
-
-
+            <!-- GRID DE CARDS DAS VAGAS -->
+            <div class="opportunities-grid" id="gridVagas">
+                <!-- Vagas renderizadas via JS -->
             </div>
-
 
         </section>
 
-
     </main>
-
 
 </div>
 
+<!-- MODAL POP-UP (DETALHES DA VAGA) -->
+<div class="modal-overlay" id="modalVagaOverlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h3>Detalhes da Vaga</h3>
+            <button class="modal-close" id="btnFecharModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <table class="vaga-table">
+                <tr>
+                    <td class="label">Número</td>
+                    <td class="value" id="mNumero"></td>
+                </tr>
+                <tr>
+                    <td class="label">Estágio Em</td>
+                    <td class="value" id="mCurso"></td>
+                </tr>
+                <tr>
+                    <td class="label">Atividades</td>
+                    <td class="value" id="mAtividades"></td>
+                </tr>
+                <tr>
+                    <td class="label">Período</td>
+                    <td class="value" id="mPeriodo"></td>
+                </tr>
+                <tr>
+                    <td class="label">Remuneração</td>
+                    <td class="value" id="mRemuneracao"></td>
+                </tr>
+                <tr>
+                    <td class="label">Benefícios</td>
+                    <td class="value" id="mBeneficios"></td>
+                </tr>
+                <tr>
+                    <td class="label">Horário</td>
+                    <td class="value" id="mHorario"></td>
+                </tr>
+                <tr>
+                    <td class="label">Empresa</td>
+                    <td class="value" id="mEmpresa"></td>
+                </tr>
+                <tr>
+                    <td class="label">Cidade</td>
+                    <td class="value" id="mCidade"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-tenho-interesse" id="btnTenhoInteresse">Tenho interesse</button>
+        </div>
+    </div>
+</div>
 
-    <script src="menu.js"></script>
+<script>
+    (function () {
+        // DADOS DAS VAGAS
+        var VAGAS = [
+            {
+                id: "6184831",
+                agente: "CIEE",
+                empresa: "UNIHOSP",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "3º ao 6º",
+                horario: "A COMBINAR",
+                remuneracao: "R$ 1621.00",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Acessar arquivos diversos",
+                    "Acompanhar a entrada e saída de documentos",
+                    "Auxiliar na rotina administrativa"
+                ]
+            },
+            {
+                id: "6188879",
+                agente: "CIEE",
+                empresa: "AGÊNCIA DA PREVIDÊNCIA SOCIAL GOIÂNIA - SUL",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "1º ao 9º",
+                horario: "A COMBINAR",
+                remuneracao: "R$ 1508.44",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Atendimento ao público e orientação de segurados",
+                    "Apoio na organização de arquivos e processos digitais",
+                    "Auxílio no preenchimento de formulários internos"
+                ]
+            },
+            {
+                id: "6193236",
+                agente: "CIEE",
+                empresa: "AGÊNCIA DA PREVIDÊNCIA SOCIAL GOIÂNIA - SUL",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "1º ao 4º",
+                horario: "07:00 ÀS 13:00",
+                remuneracao: "R$ 1508.42",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Recepção e triagem de atendimento presencial",
+                    "Apoio operacional às equipes administrativas",
+                    "Conferência e digitalização de documentos"
+                ]
+            },
+            {
+                id: "1943",
+                agente: "INSTITUTO FEDERAL DE EDUCACAO, CIENCIA E TECNOLOGIA GOIANO",
+                empresa: "INSTITUTO FEDERAL DE EDUCACAO, CIENCIA E TECNOLOGIA GOIANO",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "1º ao 7º",
+                horario: "MATUTINO OU VESPERTINO",
+                remuneracao: "R$ 1508.42",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Apoio na gestão acadêmica e secretariado",
+                    "Elaboração de planilhas e relatórios simples",
+                    "Atendimento telefônico e presencial a alunos e docentes"
+                ]
+            },
+            {
+                id: "6197501",
+                agente: "CIEE",
+                empresa: "STAY COWORKING E CAFE LTDA.",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "1º ao 9º",
+                horario: "13:00 ÀS 18:30",
+                remuneracao: "R$ 1400.00",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Recepção de clientes e controle de reserva de salas",
+                    "Suporte no controle de fluxo de caixa e suprimentos",
+                    "Apoio em rotinas administrativas e operacionais do espaço"
+                ]
+            },
+            {
+                id: "6210433",
+                agente: "CIEE",
+                empresa: "CRQ 12",
+                cidade: "GOIANIA",
+                curso: "ADMINISTRAÇÃO",
+                periodo: "1º ao 8º",
+                horario: "08:00 ÀS 14:00",
+                remuneracao: "R$ 1400.00",
+                beneficios: "Auxílio Transporte",
+                atividades: [
+                    "Suporte ao setor de registro e fiscalização",
+                    "Atendimento a profissionais registrados",
+                    "Organização de acervo documental e arquivo"
+                ]
+            }
+        ];
+
+        var gridVagas        = document.getElementById("gridVagas");
+        var inpBusca         = document.getElementById("inpBusca");
+        var txtContador      = document.getElementById("txtContador");
+        var modalOverlay     = document.getElementById("modalVagaOverlay");
+        var btnFecharModal   = document.getElementById("btnFecharModal");
+        var btnTenhoInteresse = document.getElementById("btnTenhoInteresse");
+
+        // ELEMENTOS DA TABELA NO MODAL
+        var mNumero      = document.getElementById("mNumero");
+        var mCurso       = document.getElementById("mCurso");
+        var mAtividades  = document.getElementById("mAtividades");
+        var mPeriodo     = document.getElementById("mPeriodo");
+        var mRemuneracao = document.getElementById("mRemuneracao");
+        var mBeneficios  = document.getElementById("mBeneficios");
+        var mHorario     = document.getElementById("mHorario");
+        var mEmpresa     = document.getElementById("mEmpresa");
+        var mCidade      = document.getElementById("mCidade");
+
+        function esc(txt) {
+            return String(txt).replace(/[&<>"']/g, function (c) {
+                return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+            });
+        }
+
+        function normalizar(txt) {
+            return String(txt).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        function renderizarGrid(lista) {
+            if (lista.length === 0) {
+                gridVagas.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #75698f; padding: 40px;">Nenhuma vaga de estágio encontrada.</p>';
+                txtContador.textContent = "0 vagas encontradas";
+                return;
+            }
+
+            txtContador.textContent = lista.length + (lista.length === 1 ? " vaga encontrada" : " vagas encontradas");
+
+            gridVagas.innerHTML = lista.map(function (v, idx) {
+                return '<article class="opportunity-card">' +
+                            '<div class="opportunity-top">' +
+                                '<div class="opportunity-icon">🎓</div>' +
+                                '<div class="opportunity-title">' +
+                                    '<h3>Estágio em ' + esc(v.curso) + '</h3>' +
+                                    '<p>' + esc(v.empresa) + '</p>' +
+                                '</div>' +
+                            '</div>' +
+                            '<span class="opportunity-tag">ESTÁGIO • VAGA #' + esc(v.id) + '</span>' +
+                            '<div class="opportunity-description">' +
+                                '<strong>Agente:</strong> ' + esc(v.agente) + '<br>' +
+                                '<strong>Período:</strong> ' + esc(v.periodo) + ' | <strong>Horário:</strong> ' + esc(v.horario) +
+                            '</div>' +
+                            '<div class="opportunity-info">' +
+                                '<div><span>Cidade</span><strong>' + esc(v.cidade) + '</strong></div>' +
+                                '<div><span>Horário</span><strong>' + esc(v.horario) + '</strong></div>' +
+                            '</div>' +
+                            '<div class="opportunity-footer">' +
+                                '<div class="remuneracao-valor">' +
+                                    '<span>Remuneração</span>' + esc(v.remuneracao) +
+                                '</div>' +
+                                '<button type="button" class="opportunity-button btn-detalhes" data-id="' + esc(v.id) + '">Ver detalhes</button>' +
+                            '</div>' +
+                       '</article>';
+            }).join("");
+
+            var botoes = gridVagas.querySelectorAll(".btn-detalhes");
+            botoes.forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var id = this.getAttribute("data-id");
+                    var vagaObj = VAGAS.find(function (item) { return item.id === id; });
+                    if (vagaObj) abrirModal(vagaObj);
+                });
+            });
+        }
+
+        function abrirModal(vaga) {
+            mNumero.textContent      = vaga.id;
+            mCurso.innerHTML         = '&bull;&nbsp;&nbsp;' + esc(vaga.curso);
+            mPeriodo.textContent     = vaga.periodo;
+            mRemuneracao.textContent = vaga.remuneracao;
+            mBeneficios.textContent  = vaga.beneficios || "Auxílio Transporte";
+            mHorario.textContent     = vaga.horario;
+            mEmpresa.textContent     = vaga.empresa;
+            mCidade.textContent      = vaga.cidade;
+
+            mAtividades.innerHTML = '<ul>' +
+                vaga.atividades.map(function (act) {
+                    return '<li>' + esc(act) + '</li>';
+                }).join("") +
+            '</ul>';
+
+            modalOverlay.classList.add("active");
+        }
+
+        function fecharModal() {
+            modalOverlay.classList.remove("active");
+        }
+
+        btnFecharModal.addEventListener("click", fecharModal);
+
+        modalOverlay.addEventListener("click", function (e) {
+            if (e.target === modalOverlay) fecharModal();
+        });
+
+        btnTenhoInteresse.addEventListener("click", function () {
+            alert("Interesse registrado com sucesso para a vaga #" + mNumero.textContent + "!");
+            fecharModal();
+        });
+
+        inpBusca.addEventListener("input", function () {
+            var term = normalizar(this.value.trim());
+            var filtradas = VAGAS.filter(function (v) {
+                return normalizar(v.empresa).indexOf(term) !== -1 ||
+                       normalizar(v.curso).indexOf(term) !== -1 ||
+                       normalizar(v.cidade).indexOf(term) !== -1 ||
+                       normalizar(v.id).indexOf(term) !== -1;
+            });
+            renderizarGrid(filtradas);
+        });
+
+        renderizarGrid(VAGAS);
+    })();
+</script>
+<script src="menu.js"></script>
 </body>
 
 </html>
