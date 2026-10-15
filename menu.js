@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { href: "meus-cursos.html", icon: "📚", text: "DOCUMENTOS" },
         { href: "pendencias.html", icon: "⚠️", text: "PENDÊNCIAS" },
         { href: "declaracoes.html", icon: "📄", text: "DECLARAÇÕES" },
-        { href: "oportunidades.html", icon: "💼", text: "OPORTUNIDADES" },
+        { href: "oportunidades.html", icon: "💼", text: "VAGAS DE ESTÁGIO" },
         { href: "Atividades.html", icon: "🎓", text: "ATIVIDADES" },
         { href: "bolsas.html", icon: "💰", text: "BOLSAS" },
         { href: "programas.html", icon: "📋", text: "PROGRAMAS" },
